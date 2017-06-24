@@ -1,0 +1,43 @@
+{% extends 'music/base.html' %}
+{% block title %} All Songs {% endblock %}
+{% block body %}
+<div class="container-fluid">
+
+
+<div class="panel panel-default">
+<!-- Default panel contents -->
+
+<div class="panel-heading center-block"><h3>All Available Songs</h3></div>
+<!-- Table -->
+<table class="table">
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Album Title</th>
+      <th>Favorite</th>
+      <th>Audio Type</th>
+    </tr>
+    {% for song in all_songs %}
+      <tr>
+        <td>{{ song.id }}</td>
+        <td>{{ song.song_title }}</td>
+        <td>{{ song.album.artist }}</td>
+        <td>{{ song.album.album_title }}</td>
+        {% if song.is_favorite %}
+          <td>
+            <img src="http://www.ravenwoodtiger.com/uploads/3/1/1/4/31144699/100422_orig.jpg" style="height:16px" alt="">
+          </td>
+        {% endif %}
+        <td>{{ song.file_type }}</td>
+
+
+
+      </tr>
+    {% endfor %}
+</table>
+</div>
+</div>
+
+
+{% endblock %}
